@@ -34,7 +34,7 @@ void setup()
 
   pinMode(8,OUTPUT);     	//signal to piezo buzzer
   pinMode(9, INPUT);		//signal to PIR	
-  pinMode(10, OUTPUT);		//signal to npn as switch
+  pinMode(10, OUTPUT);		//to relay which conttrols motor
   pinMode(4, OUTPUT);		//Red LED
   pinMode(3, OUTPUT);		//Green LED
  
@@ -87,7 +87,7 @@ void loop()
 int val = analogRead(gas_sensor);      //read sensor value
   Serial.print("|| Gas Sensor Value = ");
   Serial.print(val);				   //Printing in serial monitor
-//val = map(val, 300, 750, 0, 100); 
+
   if (val > limit)
   	{
     	tone(8, 650);

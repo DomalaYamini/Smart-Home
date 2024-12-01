@@ -22,7 +22,7 @@ long readUltrasonicDistance(int triggerPin, int echoPin)
   return pulseIn(echoPin, HIGH);
 }
 
-Servo servo_7;
+Servo myservo;
 
 void setup()
 {
@@ -30,7 +30,7 @@ void setup()
   pinMode(A0, INPUT);		//LDR
   pinMode(A1,INPUT);      	//gas sensor
   pinMode(13, OUTPUT);		//connected to relay
-  servo_7.attach(7, 500, 2500); //servo motor
+  myservo.attach(7, 500, 2500); //servo motor
 
   pinMode(8,OUTPUT);     	//signal to piezo buzzer
   pinMode(9, INPUT);		//signal to PIR	
@@ -102,7 +102,7 @@ int val = analogRead(gas_sensor);      //read sensor value
 
   if (sen1Value < 100) 
   	{
-    	servo_7.write(90);
+    	myservo.write(90);
     Serial.print(" 	  || Door Open!  ; Distance = ");
     Serial.print(sen1Value);
    Serial.print("\n");
@@ -110,7 +110,7 @@ int val = analogRead(gas_sensor);      //read sensor value
   	} 
   else 
   	{
-    	servo_7.write(0);
+    	myservo.write(0);
     Serial.print(" 	  || Door Closed! ; Distance =  ");
     Serial.print(sen1Value);
     Serial.print("\n");
